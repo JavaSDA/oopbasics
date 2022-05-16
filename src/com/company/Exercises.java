@@ -1,5 +1,7 @@
 package com.company;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -10,7 +12,9 @@ public class Exercises {
 //        getEvenOdd();
 //        getVowelNumber();
 //        getSmallest();
-        getAverageLength();
+//        getAverageLength();
+//        getEvenBeforeOdd();
+        rearrangeArray();
     }
 
     // 20 mins
@@ -142,5 +146,75 @@ public class Exercises {
     // returns the percentage of odd numbers present in the array.
     // Input: [3, 8, 9, 10]
     // Output: The percentage of odd numbers is: 50%
+
+    // 30 mins.
+    // Write a method that asks a user to enter a range of numbers and
+    // sort the numbers in such a way that even numbers come before the odd numbers.
+    // Input: [7, 9, 4, 2, 8]
+    // Output: [4, 2, 8, 7, 9]
+
+    public static void getEvenBeforeOdd() {
+        // Prompt the user to ask for how many numbers they want to enter
+        System.out.print("How many numbers do you want to enter?: ");
+        int[] numbers = new int[scanner.nextInt()];
+
+        // Populate our array
+        for (int i = 0; i < numbers.length; i++) {
+            // Prompt the user for a number
+            System.out.print("Enter a number: ");
+            numbers[i] = scanner.nextInt();
+        }
+
+        // initialize counter
+        int counter = 0;
+
+        // Check continuously for even numbers and count them
+        while (counter < numbers.length && numbers[counter] % 2 == 0) counter++;
+
+        for (int i = counter + 1; i < numbers.length; i++) {
+            if (numbers[i] % 2 == 0) {
+                int temp = numbers[counter];
+                numbers[counter] = numbers[i];
+                numbers[i] = temp;
+                counter++;
+            }
+        }
+
+        System.out.println(Arrays.toString(numbers));
+
+
+    }
+
+
+    // 30 mins
+    // Write a method to rearrange this array in such a way that the element at every two indices is
+    // greater than the elements to it's left and right.
+    // The array is: {3, 5, 9, 10, 7, 2, 1}
+    // Output: {1, 3, 2, 10, 5, 9, 7}
+
+    public static void rearrangeArray() {
+        int[] numbers = {5, 9, 11, 24, 6, 13};
+
+        // Loop through the numbers array starting from the second element
+        for (int i = 1; i < numbers.length; i += 2) {
+            // check the number preceding every second element
+            if (numbers[i - 1] > numbers[i]) {
+                int temp = numbers[i-1]; // set it to the preceding number
+                numbers[i-1] = numbers[i]; // set the preceding value to the current value
+                numbers[i] = temp; // revive the temp value
+            }
+
+            // check  for the right side
+            if (i + 1 < numbers.length && numbers[i + 1] > numbers[i]) {
+                int temp = numbers[i+1]; // set it to the preceding number
+                numbers[i+1] = numbers[i]; // set the preceding value to the current value
+                numbers[i] = temp; // revive the temp value
+            }
+        }
+
+        // output
+        System.out.println("The resulting or rearranged array is: " + Arrays.toString(numbers));
+    }
+
 
 }

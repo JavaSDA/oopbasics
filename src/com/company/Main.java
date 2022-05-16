@@ -39,6 +39,7 @@ public class Main {
 //        george.setName("George");
         System.out.println(george.getName());
         System.out.println(george.getAge());
+        System.out.println(person);
 
     }
 
