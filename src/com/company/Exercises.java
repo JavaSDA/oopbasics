@@ -1,8 +1,9 @@
 package com.company;
 
-import java.lang.reflect.Array;
+import com.company.persons.Club;
+import com.company.persons.Person;
+
 import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class Exercises {
@@ -14,7 +15,23 @@ public class Exercises {
 //        getSmallest();
 //        getAverageLength();
 //        getEvenBeforeOdd();
-        rearrangeArray();
+//        rearrangeArray();
+//        Animal animal = new Animal("Cow", 4, "mooo");
+//        animal.makeSound();
+//        animal.getMovement();
+
+        Person person = new Person("Fred", 44);
+
+        Person[] people = new Person[] { person };
+
+
+        Club bucks = new Club("Milwaukee Bucks", new Person[] {
+                new Person("Giannis Antetokoumpo", 22),
+                new Person("Brook Lopez", 27),
+                new Person("Jrue Holiday", 25)
+        });
+
+        System.out.println("The average age of the "+ bucks.getName() + " is " + bucks.getAverageAge());
     }
 
     // 20 mins
